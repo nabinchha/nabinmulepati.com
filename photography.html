@@ -4,8 +4,8 @@
         <h3>{{ key }}</h3>
     </header>
     <div class="row 0% images">
-        <div class="2u 2u(mobile)" ng-repeat="image in value.images track by $index">
-            <a href="{{ value.images[$index] }}" class='image fit from-left'>
+        <div class="2u 4u(mobile)" ng-repeat="image in value.images track by $index">
+            <a href="{{ value.images[$index] }}" class="image fit from-left" target="_blank">
                 <img src="{{ value.thumbnails[$index] }}" alt="" />
             </a>
         </div>
