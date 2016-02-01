@@ -1,0 +1,17 @@
+header {
+    text-align: left !important;
+}
+
+.headerText {
+    font-size: 1.30em !important;
+
+}
+
+.textShadow {
+    text-shadow: 2px 2px 20px #000000 !important;
+}
+
+.button.style2.down {
+    width:75px !important;
+    height:75px !important;
+}
