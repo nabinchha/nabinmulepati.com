@@ -2,7 +2,20 @@ angular.module('myApp.controllers', [])
 .controller('PhotographyController', ['AWSService', '$scope', 'awsConfig',
     function(AWSService, $scope, awsConfig) {
         $scope.photoLibrary = {};
+        $scope.showProjection = false;
         $scope.test = 0;
+        $scope.imagePreview = '';
+
+        $scope.startImageProjection = function(url) {
+            $scope.showProjection = true;
+            $scope.imagePreview = url;
+        };
+
+        $scope.stopImageProjection = function() {
+            $scope.showProjection = false;
+            $scope.imagePreview = '';
+        };
+
         self.getFullImageUrl = function(category, key) {
             return awsConfig.awsS3BaseUrl + '/' + category + '/' + key;
         };

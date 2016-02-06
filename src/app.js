@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngRoute', 'myApp.services', 'myApp.controllers'])
+angular.module('myApp', ['ngRoute', 'ngAnimate', 'myApp.services', 'myApp.controllers'])
 .value('awsConfig', {
     awsRegion: 'us-east-1',
     awsBucketNamePhotography: 'nabinmulepatidotcom-photography',
