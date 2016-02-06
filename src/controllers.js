@@ -49,7 +49,7 @@ angular.module('myApp.controllers', [])
             $(selector).css({'background': 'url(' + imageUrl + ')'});
             $(selector).css({'background-size': backgroundSize});
             $(selector).css({'background-attachment': 'fixed'});
-            $(selector).css({'background-position': 'bottom center'});
+            $(selector).css({'background-position': 'center center'});
             $(selector).css({'background-repeat': 'no-repeat'});
         };
 
