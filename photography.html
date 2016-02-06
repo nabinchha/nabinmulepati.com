@@ -1,9 +1,8 @@
 <div class="projection" ng-show="showProjection">
-    <div class="projection-closer" ng-click="stopImageProjection()"><img src="assets/css/images/poptrox-closer.svg"/></div>
-    <div class="projection-prev" ng-click="changeProjectionForward(false)"><img src="assets/css/images/arrow-small.svg"/></div>
-    <div class="projection-next" ng-click="changeProjectionForward(true)"><img src="assets/css/images/arrow-small.svg"/></div>
-    <div class="row projection-container">
-        <img class="12u$" src="{{ imagePreview }}" alt="" />
+    <div class="projection-closer" ng-click="showProjection=false"><img src="assets/css/images/poptrox-closer.svg"/></div>
+    <div class="projection-prev" ng-click="moveImageProjection(false)"><img src="assets/css/images/arrow-small.svg"/></div>
+    <div class="projection-next" ng-click="moveImageProjection(true)"><img src="assets/css/images/arrow-small.svg"/></div>
+    <div class="projection-container">
     </div>
 </div>
 

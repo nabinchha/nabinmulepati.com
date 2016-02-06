@@ -4,9 +4,6 @@ angular.module('myApp.controllers', [])
         $scope.categories = [];
         $scope.photoLibrary = {};
         $scope.showProjection = false;
-        $scope.test = 0;
-        $scope.imagePreview = '';
-
         $scope.currentCategoryIndex = 0;
         $scope.currentIndex = 0;
 
@@ -17,8 +14,8 @@ angular.module('myApp.controllers', [])
             self.setImageProjection();
         };
 
-        $scope.changeProjectionForward = function(forward) {
-            if (forward) {
+        $scope.moveImageProjection = function(directionIsForward) {
+            if (directionIsForward) {
                 $scope.currentIndex += 1;
             } else {
                 $scope.currentIndex -= 1;
@@ -41,17 +38,16 @@ angular.module('myApp.controllers', [])
                     $scope.currentIndex -= 1;
                 }
             }
-
             self.setImageProjection();
         }
 
-        $scope.stopImageProjection = function() {
-            $scope.showProjection = false;
-            $scope.imagePreview = '';
-        };
-
         self.setImageProjection = function() {
-            $scope.imagePreview = $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images[$scope.currentIndex];
+            url = $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images[$scope.currentIndex];
+            $('.projection-container').css({'background': 'url(' + url + ')'});
+            $('.projection-container').css({'background-size':'contain'});
+            $('.projection-container').css({'background-attachment':'scroll'});
+            $('.projection-container').css({'background-position':'center center'});
+            $('.projection-container').css({'background-repeat':'no-repeat'});
         };
 
         self.getFullImageUrl = function(category, key) {

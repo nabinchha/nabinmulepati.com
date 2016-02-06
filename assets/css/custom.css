@@ -2,12 +2,12 @@ header {
     text-align: left !important;
 }
 
-.headerText {
+.header-text {
     font-size: 1.30em !important;
     text-align: left !important;
 }
 
-.textShadow {
+.text-shadow {
     text-shadow: 2px 2px 20px #000000 !important;
 }
 
@@ -16,7 +16,7 @@ header {
     height:75px !important;
 }
 
-.socialIcons {
+.social-icons {
     text-align: left !important;
 }
 
@@ -29,7 +29,21 @@ header {
     height: 100%;
     z-index: 99999;
     display: block;
-    background-color: rgba(0,0,0, 0.90);
+    background-color: rgba(0,0,0, 0.95);
+}
+
+.projection-container {
+    height: 100%;
+    width: auto;
+
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+.projection-container img {
+    margin: auto auto;
 }
 
 .projection.ng-hide {
@@ -44,15 +58,15 @@ header {
 }
 
 .projection-closer {
-    top: 20px;
-    right: 20px;
+    top: 5px;
+    right: 5px;
 }
 
 .projection-closer img,
 .projection-next img,
 .projection-prev img {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0, 0.70));
             filter: drop-shadow(0px 0px 5px rgba(0,0,0, 0.70));
 }
@@ -63,19 +77,20 @@ header {
 }
 
 .projection-prev {
-    left: 20px;
+    left: 5px;
     transform: rotate(180deg);
 }
 
 .projection-next {
-    right: 20px;
+    right: 5px;
 }
 
-.projection-container {
-    height: 100%;
-    width: auto;
-}
 
-.projection-container img {
-    margin: auto auto;
+@media screen and (min-width: 640px) {
+    .projection-closer img,
+    .projection-next img,
+    .projection-prev img {
+        width: 40px;
+        height: 40px;
+    }
 }
