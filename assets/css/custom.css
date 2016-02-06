@@ -36,18 +36,39 @@ header {
     opacity: 0;
 }
 
-.projection-closer {
+.projection-closer,
+.projection-next,
+.projection-prev {
     position: fixed;
-    top: 20px;
-    right: 20px;
     opacity: 0.80;
 }
 
-.projection-closer img {
+.projection-closer {
+    top: 20px;
+    right: 20px;
+}
+
+.projection-closer img,
+.projection-next img,
+.projection-prev img {
     width: 50px;
     height: 50px;
     -webkit-filter: drop-shadow(0px 0px 5px rgba(0,0,0, 0.70));
             filter: drop-shadow(0px 0px 5px rgba(0,0,0, 0.70));
+}
+
+.projection-next,
+.projection-prev {
+    bottom: 50%;
+}
+
+.projection-prev {
+    left: 20px;
+    transform: rotate(180deg);
+}
+
+.projection-next {
+    right: 20px;
 }
 
 .projection-container {

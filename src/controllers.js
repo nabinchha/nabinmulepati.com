@@ -1,19 +1,57 @@
 angular.module('myApp.controllers', [])
 .controller('PhotographyController', ['AWSService', '$scope', 'awsConfig',
     function(AWSService, $scope, awsConfig) {
+        $scope.categories = [];
         $scope.photoLibrary = {};
         $scope.showProjection = false;
         $scope.test = 0;
         $scope.imagePreview = '';
 
-        $scope.startImageProjection = function(url) {
+        $scope.currentCategoryIndex = 0;
+        $scope.currentIndex = 0;
+
+        $scope.startProjection = function(categoryIndex, imageIndex) {
             $scope.showProjection = true;
-            $scope.imagePreview = url;
+            $scope.currentCategoryIndex = categoryIndex;
+            $scope.currentIndex = imageIndex;
+            self.setImageProjection();
         };
+
+        $scope.changeProjectionForward = function(forward) {
+            if (forward) {
+                $scope.currentIndex += 1;
+            } else {
+                $scope.currentIndex -= 1;
+            }
+
+            if ($scope.currentIndex < 0) {
+                if ($scope.currentCategoryIndex > 0) {
+                    $scope.currentCategoryIndex -= 1;
+                    $scope.currentIndex = $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images.length-1
+                } else {
+                    $scope.currentIndex = 0;
+                }
+            }
+
+            if ($scope.currentIndex >= $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images.length) {
+                if ($scope.currentCategoryIndex < $scope.categories.length-1) {
+                    $scope.currentCategoryIndex += 1;
+                    $scope.currentIndex = 0;
+                } else {
+                    $scope.currentIndex -= 1;
+                }
+            }
+
+            self.setImageProjection();
+        }
 
         $scope.stopImageProjection = function() {
             $scope.showProjection = false;
             $scope.imagePreview = '';
+        };
+
+        self.setImageProjection = function() {
+            $scope.imagePreview = $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images[$scope.currentIndex];
         };
 
         self.getFullImageUrl = function(category, key) {
@@ -54,12 +92,14 @@ angular.module('myApp.controllers', [])
         self.loadPhotoLibrary = function() {
             AWSService.getItemsInBucket(awsConfig.awsBucketNamePhotography, function(items) {
                 var library = {};
+                var categories = [];
                 for (i=0; i<items.length; ++i) {
                     var item = items[i];
                     var category = self.getParentFolderFromPath(item.Key);
 
                     if (self.isFolder(item.Key) == false) {
                         if ((category in library) == false) {
+                            categories.push(category);
                             library[category] = {
                                 images: [],
                                 thumbnails: []
@@ -75,6 +115,7 @@ angular.module('myApp.controllers', [])
                     }
                 }
                 $scope.photoLibrary = library;
+                $scope.categories = categories;
                 $scope.$apply();
             });
         };
