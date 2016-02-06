@@ -1,6 +1,6 @@
 angular.module('myApp.controllers', [])
-.controller('PhotographyController', ['AWSService', '$scope', 'awsConfig',
-    function(AWSService, $scope, awsConfig) {
+.controller('PhotographyController', ['PhotoService', '$scope',
+    function(PhotoService, $scope) {
         $scope.categories = [];
         $scope.photoLibrary = {};
         $scope.showProjection = false;
@@ -11,15 +11,11 @@ angular.module('myApp.controllers', [])
             $scope.showProjection = true;
             $scope.currentCategoryIndex = categoryIndex;
             $scope.currentIndex = imageIndex;
-            self.setImageProjection();
+            self.projectImageWithUrl(self.getCurrentImageUrl());
         };
 
         $scope.moveImageProjection = function(directionIsForward) {
-            if (directionIsForward) {
-                $scope.currentIndex += 1;
-            } else {
-                $scope.currentIndex -= 1;
-            }
+            $scope.currentIndex = (directionIsForward) ? $scope.currentIndex + 1 : $scope.currentIndex - 1
 
             if ($scope.currentIndex < 0) {
                 if ($scope.currentCategoryIndex > 0) {
@@ -38,80 +34,35 @@ angular.module('myApp.controllers', [])
                     $scope.currentIndex -= 1;
                 }
             }
-            self.setImageProjection();
+            self.projectImageWithUrl(self.getCurrentImageUrl());
         }
 
-        self.setImageProjection = function() {
-            url = $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images[$scope.currentIndex];
-            $('.projection-container').css({'background': 'url(' + url + ')'});
-            $('.projection-container').css({'background-size':'contain'});
-            $('.projection-container').css({'background-attachment':'scroll'});
-            $('.projection-container').css({'background-position':'center center'});
-            $('.projection-container').css({'background-repeat':'no-repeat'});
+        self.getCurrentImageUrl = function() {
+            return $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images[$scope.currentIndex];
         };
 
-        self.getFullImageUrl = function(category, key) {
-            return awsConfig.awsS3BaseUrl + '/' + category + '/' + key;
+        self.projectImageWithUrl = function(imageUrl) {
+            self.setImageBackground('.projection-container', 'contain', imageUrl);
         };
 
-        self.getParentFolderFromPath = function(key) {
-            parts = key.split('/')
-            return parts[0];
-        };
-
-        self.isFolder = function(key) {
-            if (key.slice(-1) == '/') {
-                return true;
-            } else {
-                return false;
-            }
-        };
-
-        self.isThumbPath = function(key) {
-            if (key.indexOf(awsConfig.awsBucketThumbFolderName) > -1) {
-                return true;
-            } else {
-                return false;
-            }
+        self.setImageBackground = function(selector, backgroundSize, imageUrl) {
+            $(selector).css({'background': 'url(' + imageUrl + ')'});
+            $(selector).css({'background-size': backgroundSize});
+            $(selector).css({'background-attachment': 'fixed'});
+            $(selector).css({'background-position': 'bottom center'});
+            $(selector).css({'background-repeat': 'no-repeat'});
         };
 
         self.loadHeroImage = function() {
-            AWSService.getHeroImageUrl(function(urlResponse) {
-                $('#intro').css({'background': 'url(' + urlResponse + ')'});
-                $('#intro').css({'background-size':'cover'});
-                $('#intro').css({'background-attachment':'fixed'});
-                $('#intro').css({'background-position':'bottom center'});
-                $('#intro').css({'background-repeat':'no-repeat'});
+            PhotoService.getHeroImageUrl(function(imageUrl) {
+                self.setImageBackground('#intro', 'cover', imageUrl);
             });
         };
 
         self.loadPhotoLibrary = function() {
-            AWSService.getItemsInBucket(awsConfig.awsBucketNamePhotography, function(items) {
-                var library = {};
-                var categories = [];
-                for (i=0; i<items.length; ++i) {
-                    var item = items[i];
-                    var category = self.getParentFolderFromPath(item.Key);
-
-                    if (self.isFolder(item.Key) == false) {
-                        if ((category in library) == false) {
-                            categories.push(category);
-                            library[category] = {
-                                images: [],
-                                thumbnails: []
-                            };
-                        }
-
-                        var imageUrl = self.getFullImageUrl(awsConfig.awsBucketNamePhotography, item.Key);
-                        if (self.isThumbPath(item.Key)) {
-                            library[category].thumbnails.push(imageUrl)
-                        } else {
-                            library[category].images.push(imageUrl)
-                        }
-                    }
-                }
-                $scope.photoLibrary = library;
+            PhotoService.getPhotolibrary(function(categories, library) {
                 $scope.categories = categories;
+                $scope.photoLibrary = library;
                 $scope.$apply();
             });
         };
