@@ -37,6 +37,15 @@ angular.module('myApp.controllers', [])
             self.projectImageWithUrl(self.getCurrentImageUrl());
         }
 
+        $scope.onKeyDown = function ($event) {
+            var keyCode = (window.event ? $event.keyCode : keyEvent.which)
+            if (keyCode == 37) {
+                $scope.moveImageProjection(false);
+            } else if(keyCode == 39) {
+                $scope.moveImageProjection(true);
+            }
+        };
+
         self.getCurrentImageUrl = function() {
             return $scope.photoLibrary[$scope.categories[$scope.currentCategoryIndex]].images[$scope.currentIndex];
         };

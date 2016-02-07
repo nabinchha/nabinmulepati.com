@@ -1,4 +1,4 @@
-<div class="projection" ng-show="showProjection">
+<div class="projection" ng-show="showProjection" ng-keydown="onKeyDown($event)" tabindex="-1">
     <div class="projection-closer" ng-click="showProjection=false"><img src="assets/css/images/poptrox-closer.svg"/></div>
     <div class="projection-prev" ng-click="moveImageProjection(false)"><img src="assets/css/images/arrow-small.svg"/></div>
     <div class="projection-next" ng-click="moveImageProjection(true)"><img src="assets/css/images/arrow-small.svg"/></div>
