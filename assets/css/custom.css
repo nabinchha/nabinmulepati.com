@@ -2,6 +2,10 @@ header {
     text-align: left !important;
 }
 
+.image {
+    cursor: pointer;
+}
+
 .header-text {
     font-size: 1.30em !important;
     text-align: left !important;
@@ -55,6 +59,7 @@ header {
 .projection-prev {
     position: fixed;
     opacity: 0.80;
+    cursor: pointer;
 }
 
 .projection-closer {
