@@ -57,7 +57,6 @@ angular.module('myApp.controllers', [])
         self.setImageBackground = function(selector, backgroundSize, imageUrl) {
             $(selector).css({'background': 'url(' + imageUrl + ')'});
             $(selector).css({'background-size': backgroundSize});
-            $(selector).css({'background-attachment': 'fixed'});
             $(selector).css({'background-position': 'center center'});
             $(selector).css({'background-repeat': 'no-repeat'});
         };
