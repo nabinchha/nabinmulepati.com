@@ -2,7 +2,7 @@ angular.module('myApp.services', [])
 .service('AWSService', ['awsConfig', function(awsConfig) {
     this.getItemsInBucket = function(bucketName, callback) {
         var params = {
-            Bucket: bucketName,
+            Bucket: bucketName
         };
         var s3 = new AWS.S3({
             region: awsConfig.awsRegion,
@@ -14,7 +14,7 @@ angular.module('myApp.services', [])
             if (err) {
                 console.log(err, err.stack);
             } else {
-                callback(data.Contents)
+                callback(data.Contents);
             }
         });
     };
@@ -22,13 +22,13 @@ angular.module('myApp.services', [])
 .service('PhotoService', ['awsConfig', 'AWSService', function(awsConfig, AWSService) {
     this.getHeroImageUrl = function(callback) {
         AWSService.getItemsInBucket(awsConfig.awsBucketNameHeroImages, function(items){
-            randomIndex = Math.floor((Math.random() * items.length) + 1);
-            url = awsConfig.awsS3BaseUrl + '/' + awsConfig.awsBucketNameHeroImages + '/' + items[randomIndex-1].Key
-            callback(url)
+            var randomIndex = Math.floor((Math.random() * items.length) + 1);
+            var url = awsConfig.awsS3BaseUrl + '/' + awsConfig.awsBucketNameHeroImages + '/' + items[randomIndex-1].Key;
+            callback(url);
         });
     };
 
-    this.getPhotolibrary = function(callback) {
+    this.getPhotoLibrary = function(callback) {
         AWSService.getItemsInBucket(awsConfig.awsBucketNamePhotography, function(items) {
             var library = {};
             var categories = [];
@@ -55,30 +55,22 @@ angular.module('myApp.services', [])
             }
             callback(categories, library);
         });
-    }
+    };
 
     function getFullImageUrl(category, key) {
         return awsConfig.awsS3BaseUrl + '/' + category + '/' + key;
-    };
+    }
 
     function getParentFolderFromPath(key) {
-        parts = key.split('/')
+        var parts = key.split('/');
         return parts[0];
     }
 
     function isFolder(key) {
-        if (key.slice(-1) == '/') {
-            return true;
-        } else {
-            return false;
-        }
-    };
+        return (key.slice(-1) == '/');
+    }
 
     function isThumbPath(key) {
-        if (key.indexOf(awsConfig.awsBucketThumbFolderName) > -1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
+        return (key.indexOf(awsConfig.awsBucketThumbFolderName) > -1);
+    }
 }]);

@@ -15,7 +15,7 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.moveImageProjection = function(directionIsForward) {
-            $scope.currentIndex = (directionIsForward) ? $scope.currentIndex + 1 : $scope.currentIndex - 1
+            $scope.currentIndex = (directionIsForward) ? $scope.currentIndex + 1 : $scope.currentIndex - 1;
 
             if ($scope.currentIndex < 0) {
                 if ($scope.currentCategoryIndex > 0) {
@@ -35,10 +35,10 @@ angular.module('myApp.controllers', [])
                 }
             }
             self.projectImageWithUrl(self.getCurrentImageUrl());
-        }
+        };
 
         $scope.onKeyDown = function ($event) {
-            var keyCode = (window.event ? $event.keyCode : keyEvent.which)
+            var keyCode = (window.event ? $event.keyCode : keyEvent.which);
             if (keyCode == 37) {
                 $scope.moveImageProjection(false);
             } else if(keyCode == 39) {
@@ -68,7 +68,7 @@ angular.module('myApp.controllers', [])
         };
 
         self.loadPhotoLibrary = function() {
-            PhotoService.getPhotolibrary(function(categories, library) {
+            PhotoService.getPhotoLibrary(function(categories, library) {
                 $scope.categories = categories;
                 $scope.photoLibrary = library;
                 $scope.$apply();
