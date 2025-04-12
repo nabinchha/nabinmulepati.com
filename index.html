@@ -4,13 +4,13 @@ Template Big Picture by HTML5 UP
 html5up.net | @n33co
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html ng-app="myApp">
+<html>
 <head>
 	<title>Nabin Mulepati</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="Nabin Mulepati - Software Engineer">
-	<meta name="keywords" content="Nabin Mulepati, Mulepati,Nabin, photography, Philadelphia, Pennsylvania, Bucks County, Bhaktapur, Nepal, Kathmandu, Software Developer, Software Engineer, Software Development">
-	<meta name="heading" content="Nabin Mulepati - Software Engineer">
+	<meta name="description" content="Nabin Mulepati - ML Engineer">
+	<meta name="keywords" content="Nabin Mulepati, Mulepati,Nabin, photography, Boulder, Colorado, Bhaktapur, Nepal, Kathmandu, Machine Learning Engineer">
+	<meta name="heading" content="Nabin Mulepati - ML Engineer">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -18,16 +18,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<link rel="stylesheet" href="assets/css/custom.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-
-	<!-- AngularJS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
-	<script src="src/aws-sdk-2.2.33.min.js"></script>
-	<script	src="src/app.js"></script>
-	<script src="src/controllers.js"></script>
-	<script src="src/services.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -58,10 +48,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<ul class="actions">
 					<li><a href="https://github.com/nabinchha" class="icon fa-github" target="_blank"><span class="label">Github</span></a></li>
 					<li><a href="https://www.linkedin.com/pub/nabin-mulepati/31/a1/633" class="icon fa-linkedin" target="_blank"><span class="label">Linkedin</span></a></li>
-					<li><a href="https://twitter.com/nabinchha" class="icon fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
 					<li><a href="https://instagram.com/nabinchha" class="icon fa-instagram" target="_blank"><span class="label">500px</span></a></li>
-					<!--<li><a href="https://www.flickr.com/photos/blackxtibook" class="icon fa-flickr" target="_blank"><span class="label">Flickr</span></a></li>-->
-					<!--<li><a href="https://500px.com/nabinmulepati" class="icon fa-500px" target="_blank"><span class="label">500px</span></a></li>-->
 				</ul>
 			</div>
 		</div>
@@ -77,14 +64,21 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 					<br>
 					I'm an engineering leader passionate about using machine learning to solve real world problems. I've spent the past couple of years focusing on building and scaling nlp recommender + neural search systems that use transformer models to capture meaning in text via embeddings. Checkout my linkedin for recent updates.
 					<br><br>
-					I work on side projects when I have some free time. Most recently, my wife <a href="http://www.tesswright.com" target="_blank">Tess</a> and I worked on a fun game called <a href="http://www.runtheroll.com" target="_blank">Run the Roll</a> and released it to the <a href="https://itunes.apple.com/us/app/run-the-roll/id1038089590" target="_blank">app store</a>. It is fast-paced and challenging. It also won't cost you anything to try. Feel free to check it out!
 				</p>
 			</header>
 			<header>
 				<h2>photography</h2>
-				<p>I enjoy capturing portraits and landscapes. Lately, I photograph mostly when I travel. I use Sony A7II with 24-105mm f/4, 16-35mm f/4, and 85mm f/1.8 lenses. Checkout my <a href="http://www.instagram.com/nabinchha" target="_blank">instagram</a>, where I tend to post more often than here, to see what I am up to recently.</p>
+				<p>I enjoy capturing portraits and landscapes. Lately, I photograph mostly when I travel. I use Sony A7III with 35-150mm f/2-2.8, 24-105mm f/4, 16-35mm f/4, and 85mm f/1.8 lenses. Checkout my <a href="http://www.instagram.com/nabinchha" target="_blank">instagram</a>, where I tend to post more often than here, to see what I am up to recently.</p>
 			</header>
-			<div class="container 75% gallery" ng-view>
+			<div class="instagram-container">
+				<iframe 
+					src="https://www.instagram.com/nabinchha/embed"
+					frameborder="0"
+					scrolling="yes"
+					allowtransparency="true"
+					loading="lazy"
+					style="width: 100%; height: 800px; border: none; overflow: hidden;">
+				</iframe>
 			</div>
 		</div>
 	</section>
@@ -99,10 +93,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<ul class="actions">
 					<li><a href="https://github.com/nabinchha" class="icon fa-github" target="_blank"><span class="label">Github</span></a></li>
 					<li><a href="https://www.linkedin.com/pub/nabin-mulepati/31/a1/633" class="icon fa-linkedin" target="_blank"><span class="label">Linkedin</span></a></li>
-					<li><a href="https://twitter.com/nabinchha" class="icon fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
 					<li><a href="https://instagram.com/nabinchha" class="icon fa-instagram" target="_blank"><span class="label">500px</span></a></li>
-					<li><a href="https://www.flickr.com/photos/blackxtibook" class="icon fa-flickr" target="_blank"><span class="label">Flickr</span></a></li>
-					<li><a href="https://500px.com/nabinmulepati" class="icon fa-500px" target="_blank"><span class="label">500px</span></a></li>
 				</ul>
 			</header>
 		</div>
@@ -127,6 +118,24 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<script src="assets/js/main.js"></script>
 
 	<script>
+		// Random background image for intro section
+		const backgroundImages = [
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/beach-night.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/antelope-canyon.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/assateague-park-beach.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/dhaulagiri.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/following-shadows.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/hike-through-the-forest.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/horse-shoe-bend.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/swayumbhu-birds-flying.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/tess-echo-lake.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/ultralight-pokhara.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/winter-central-park-ny.jpg',
+			'https://nabinmulepatidotcom-cover.s3.us-east-1.amazonaws.com/yosemite-cover.jpg'
+		];
+		const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+		document.getElementById('intro').style.backgroundImage = `url('${randomImage}')`;
+
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

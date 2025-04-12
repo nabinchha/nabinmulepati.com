@@ -98,3 +98,27 @@ a {
         height: 40px;
     }
 }
+
+.instagram-container {
+    margin: 2em 0;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    overflow: hidden;
+}
+
+.instagram-container iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 736px) {
+    .instagram-container {
+        margin: 1em 0;
+    }
+    
+    .instagram-container iframe {
+        height: 450px;
+    }
+}
